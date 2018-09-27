@@ -15,7 +15,19 @@ export class Routes {
         url: url
       };
       request(options, (error, response, body) => {
-        res.send(JSON.parse(body));
+        let parseError = false;
+        let res;
+        try {
+          res = JSON.parse(body);
+        } catch (e) {
+          console.log(body);
+          parseError = true;
+        }
+        if (!parseError) {
+          res.send(res);
+        } else {
+          res.send(body);
+        }
       });
     });
   }
