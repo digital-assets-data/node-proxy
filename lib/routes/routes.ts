@@ -16,15 +16,15 @@ export class Routes {
       };
       request(options, (error, response, body) => {
         let parseError = false;
-        let res;
+        let resp;
         try {
-          res = JSON.parse(body);
+          resp = JSON.parse(body);
         } catch (e) {
           console.log(body);
           parseError = true;
         }
         if (!parseError) {
-          res.send(res);
+          res.send(resp);
         } else {
           res.send(body);
         }
